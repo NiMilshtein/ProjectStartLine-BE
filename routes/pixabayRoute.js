@@ -5,7 +5,7 @@ const router = express.Router();
 const apiKey = '38025714-8dab2bc0a63c5f98c1f2b7f87';
 
 router.get('/', async (req, res) => {
-  const { q } = req.query;
+  const { q, page } = req.query;
 
   try {
     const { data } = await axios.get('https://pixabay.com/api/', {
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
         editors_choice: false,
         safesearch: true,
         order: 'popular',
-        page: 1,
+        page,
         per_page: 20,
       },
     });
